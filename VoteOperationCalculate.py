@@ -1,4 +1,4 @@
-def VoteCalculate(BreakVote,DeleleVote,RuleVote):
+def VoteCalculate(BreakVote,DeleleVote,RuleVote,GiveUpEnable):
     approve=BreakVote+DeleleVote
     deny=RuleVote
     try:
@@ -14,5 +14,8 @@ def VoteCalculate(BreakVote,DeleleVote,RuleVote):
     elif(proportion<=0.3/0.7):
         result="Rule"
     else:
-        result="CannotJudge"
+        if(GiveUpEnable):
+            result='GiveUp'
+        else: 
+            result="CannotJudge"
     return result
