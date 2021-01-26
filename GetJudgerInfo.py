@@ -5,15 +5,12 @@ url='http://api.bilibili.com/x/credit/jury/jury'
 
 
 
-def GetInfo(cookie,SESSDATA):
+def GetInfo(SESSDATA):
     test='SESSDATA={}'.format(SESSDATA)
     headers={
         'cookie': test,
     }
-    params={
-        'SESSDATA': SESSDATA
-    }
-    info=r.get(url,data=params,headers=headers)
+    info=r.get(url,headers=headers)
     info_loads=js.loads(info.text)
     status={
         1: '具有资格',
@@ -26,4 +23,4 @@ def GetInfo(cookie,SESSDATA):
         '剩余资格天数': info_loads['data']['restDays'],
         '裁决准确率': str(info_loads['data']['rightRadio'])+'%'
     })
-    return parsed
+    return info_loads,parsed

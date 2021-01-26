@@ -25,5 +25,4 @@ def VoteCalculate(BreakVote,DeleleVote,RuleVote,GiveUpEnable):
             result='GiveUp'
         else: 
             result="CannotJudge"
-    
     return result,voteaction[result]
