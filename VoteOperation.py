@@ -9,13 +9,16 @@ voteaction={
     'Delete': 4
 }
 
-def Vote(opreation,cid,csrf):
+def Vote(opreation,cid,csrf,sessdata):
+    headers={
+        'cookie': 'SESSDATA={}'.format(sessdata)
+    }
     params={
         'cid': cid,
         'vote': voteaction[opreation],
         'attr': 0,
         'csrf': csrf
     }
-    VoteReturn=r.post(voteurl,params=params).text
+    VoteReturn=r.post(voteurl,params=params,headers=headers).text
     VoteResult=js.dumps(VoteReturn)
     return VoteResult

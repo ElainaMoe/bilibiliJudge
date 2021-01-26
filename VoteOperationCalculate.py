@@ -1,3 +1,10 @@
+voteaction={
+    'Break': '封禁',
+    'Rule': '合规',
+    "GiveUp": '放弃',
+    'Delete': '删除'
+}
+
 def VoteCalculate(BreakVote,DeleleVote,RuleVote,GiveUpEnable):
     approve=BreakVote+DeleleVote
     deny=RuleVote
@@ -18,4 +25,5 @@ def VoteCalculate(BreakVote,DeleleVote,RuleVote,GiveUpEnable):
             result='GiveUp'
         else: 
             result="CannotJudge"
-    return result
+    
+    return result,voteaction[result]
