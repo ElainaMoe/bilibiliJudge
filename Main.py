@@ -75,7 +75,6 @@ def Main():
                 time.sleep(delay)
                 GetAndCal(cid)
             else:
-                global cannotJudge
                 cannotJudge=False
                 break
         operation_output='案件{}的投票结果计算为{}，正在进行投票操作……'.format(caseinfo['data']['id'],operation_print)
