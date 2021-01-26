@@ -18,6 +18,7 @@
 - [变量获取](#变量获取)
 - [脚本测试](#脚本测试)
 - [脚本更新](#脚本更新)
+- [免责声明](#免责声明)
 
 ## 从零开始的使用指北☞
 
@@ -107,7 +108,15 @@
 
 ![](https://upimage.alexhchu.com/2021/01/26/5d7656029f6ed.png)
 
+![](https://upimage.alexhchu.com/2021/01/26/ae3350e1b41ea.png)
 
+![](https://upimage.alexhchu.com/2021/01/26/623081081b089.png)
+
+![](https://upimage.alexhchu.com/2021/01/26/99c5b116e6f53.png)
+
+![](https://upimage.alexhchu.com/2021/01/26/a75295ba9c1bc.png)
+
+这样你就完成了手动更新操作！
 
 ## 免责声明
 
