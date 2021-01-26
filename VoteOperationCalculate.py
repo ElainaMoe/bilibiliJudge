@@ -2,14 +2,15 @@ voteaction={
     'Break': '封禁',
     'Rule': '合规',
     "GiveUp": '放弃',
-    'Delete': '删除'
+    'Delete': '删除',
+    "CannotJudge": "无法判断"
 }
 
 def VoteCalculate(BreakVote,DeleleVote,RuleVote,GiveUpEnable):
     approve=BreakVote+DeleleVote
     deny=RuleVote
     try:
-        proportion=approve/deny
+        proportion=approve/(approve+deny)
     except ZeroDivisionError:
         proportion=1
     result=None
@@ -18,7 +19,7 @@ def VoteCalculate(BreakVote,DeleleVote,RuleVote,GiveUpEnable):
             result='Delete'
         else:
             result='Break'
-    elif(proportion<=0.3/0.7):
+    elif(proportion<=0.3):
         result="Rule"
     else:
         if(GiveUpEnable):

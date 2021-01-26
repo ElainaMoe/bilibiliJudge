@@ -8,30 +8,32 @@ from JudgementApply import Apply
 import sys
 import json as js
 import requests as r
+import time
 
 csrf=sys.argv[1]
-GiveUpEnable=True
-cid=1665870
 sessdata=sys.argv[2]
-ApplyResult=None
 
-def Main():
-    Userinfo,UserinfoParsed=GetInfo(sessdata)
-    print('获取到用户信息，具体如下：')
-    print(UserinfoParsed)
-    if(Userinfo['data']['status']==2):
-        print('检测到未具有风纪委员资格，正在尝试申请……')
-        global ApplyResult
-        ApplyResult,ApplyMsg=Apply(sessdata,csrf)
-    if(ApplyResult):
-        print('风纪委员资格申请成功，正在执行脚本操作……')
-    elif(not ApplyResult):
-        print('申请风纪委员资格失败，{}，脚本即将退出！'.format(ApplyMsg))
-        sys.exit()
-    cid=GetNew(csrf)
+if(csrf=='' or sessdata==''):
+    print('必要变量未设置！程序即将退出！')
+    sys.exit()
+
+try:
+    GiveUpEnable=sys.argv[3]
+except:
+    GiveUpEnable=True
+try:
+    if not GiveUpEnable:
+        delay=sys.argv[4]
+except:
+    delay=300
+
+ApplyResult=None
+cannotJudge=False
+
+
+def GetAndCal(cid):
     case=GetCase(cid).text
     caseinfo=js.loads(case)
-    print(caseinfo)
     printinfo=Parse(case)
     toprint='''
 获取到风纪委员案件，具体信息如下：
@@ -41,12 +43,46 @@ def Main():
     voteBreak=caseinfo['data']['voteBreak']
     voteDelete=caseinfo['data']['voteDelete']
     voteRule=caseinfo['data']['voteRule']
-    operation,operation_print=VoteCalculate(voteBreak,voteDelete,voteRule,GiveUpEnable)
-    operation_output='案件{}的投票结果计算为{}，正在进行投票操作……'.format(caseinfo['data']['id'],operation_print)
-    print(operation_output)
-    Voteresult=Vote(operation,cid,csrf,sessdata)
-    print(Voteresult)
-    print('已完成投票操作！')
+    return voteBreak,voteDelete,voteRule,caseinfo
+
+
+def Main():
+    Userinfo,UserinfoParsed=GetInfo(sessdata)
+    print('获取到用户信息，具体如下：')
+    print(UserinfoParsed)
+    if(Userinfo['data']['status']==2):
+        print('检测到未具有风纪委员资格，正在尝试申请……')
+        global ApplyResult
+        ApplyResult,ApplyMsg=Apply(sessdata,csrf)
+        if(ApplyResult):
+            print('风纪委员资格申请成功，正在执行脚本操作……')
+        elif(not ApplyResult):
+            print('申请风纪委员资格失败，{}，脚本即将退出！'.format(ApplyMsg))
+            sys.exit()
+    while True:
+        print('正在进行下一案件的获取……')
+        cid=GetNew(csrf,sessdata)
+        if(cid):
+            print('今天案件已经审核满，明天我们再继续吧~')
+            sys.exit()
+        voteBreak,voteDelete,voteRule,caseinfo=GetAndCal(cid)
+        operation,operation_print=VoteCalculate(voteBreak,voteDelete,voteRule,GiveUpEnable)
+        while True:
+            if(operation=='CannotJudge'):
+                print('目前案件{}的投票数量不足以判定操作，将在{}秒钟后重试！'.format(caseinfo['data']['id'],delay))
+                global cannotJudge
+                cannotJudge=True
+                time.sleep(delay)
+                GetAndCal(cid)
+            else:
+                global cannotJudge
+                cannotJudge=False
+                break
+        operation_output='案件{}的投票结果计算为{}，正在进行投票操作……'.format(caseinfo['data']['id'],operation_print)
+        print(operation_output)
+        Vote(operation,cid,csrf,sessdata)
+        print('已完成投票操作！')
+    
 
 if __name__ == "__main__":
     Main()
