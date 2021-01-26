@@ -81,6 +81,34 @@
 
 ![](https://upimage.alexhchu.com/2021/01/26/9c9dfd7b61e15.png)
 
+只要打了绿色的勾勾就是成功了，然后你就不用管它了，它会自己运行的
+
+![](https://upimage.alexhchu.com/2021/01/26/8efbde4e57684.png)
+
+### 脚本更新
+
+#### 自动更新（推荐）
+
+[点击这里](https://github.com/apps/pull)安装插件，可以选择所有仓库，也可以指选择你Fork的仓库（当然至少要选择fork的仓库对吧，要不然怎么更新），然后不管它就好了
+
+详细步骤可以看下面的图片
+
+![](https://upimage.alexhchu.com/2020/12/26/4c0d02795a38c.png)
+
+![](https://upimage.alexhchu.com/2020/12/26/1800e5609a365.png)
+
+![](https://upimage.alexhchu.com/2021/01/26/6231f85828022.png)
+
+#### 手动更新
+
+具体看图，**请注意：以下操作均在自己的仓库进行！**
+
+![](https://upimage.alexhchu.com/2021/01/26/b53b4f1301be5.png)
+
+![](https://upimage.alexhchu.com/2021/01/26/5d7656029f6ed.png)
+
+
+
 ## 免责声明
 
 学习项目，请勿滥用！如果有因滥用造成的封号、删除账户等情况或违反相关法律所造成的责任，本人拒不承担！
