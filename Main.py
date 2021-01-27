@@ -63,7 +63,7 @@ def Main():
         print('正在进行下一案件的获取……')
         cid=GetNew(csrf,sessdata)
         if(cid):
-            print('今天案件已经审核满，明天我们再继续吧~')
+            print('今天案件已经审核满或没有需要仲裁的案件了，明天我们再继续吧~')
             sys.exit()
         voteBreak,voteDelete,voteRule,caseinfo=GetAndCal(cid)
         operation,operation_print=VoteCalculate(voteBreak,voteDelete,voteRule,GiveUpEnable)
