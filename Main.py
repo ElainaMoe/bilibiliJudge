@@ -32,14 +32,11 @@ except:
 
 try:
     delay=int(sys.argv[4])
-    delayDisplay='{}秒'.format(delay)
 except:
     delay=300
-    delayDisplay='300秒'
 
 config={
-    '是否开启放弃': GiveUpEnableDisplay,
-    '无法判断等待时间': delayDisplay
+    '是否开启放弃': GiveUpEnableDisplay
 }
 print(config)
 ApplyResult=None
@@ -77,7 +74,7 @@ def Main():
     while True:
         print('正在进行下一案件的获取……')
         cid=GetNew(csrf,sessdata)
-        if(cid):
+        if(cid==True):
             print('今天案件已经审核满或没有需要仲裁的案件了，明天我们再继续吧~')
             sys.exit()
         voteBreak,voteDelete,voteRule,caseinfo=GetAndCal(cid)
