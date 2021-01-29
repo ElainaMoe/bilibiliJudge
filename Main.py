@@ -46,9 +46,9 @@ def GetAndCal(cid):
     caseinfo=js.loads(case)
     printinfo=Parse(case)
     toprint='''
-获取到风纪委员案件，具体信息如下：
+获取到风纪委员案件（ID：{}），具体信息如下：
 {}
-    '''.format(printinfo)
+    '''.format(cid,printinfo)
     print(toprint)
     voteBreak=caseinfo['data']['voteBreak']
     voteDelete=caseinfo['data']['voteDelete']
