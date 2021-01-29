@@ -10,11 +10,14 @@ import json as js
 import requests as r
 import time
 
-csrf=sys.argv[1]
-sessdata=sys.argv[2]
-
-if(csrf=='' or sessdata==''):
-    print('必要变量未设置！程序即将退出！')
+try:
+    csrf=sys.argv[1]
+    sessdata=sys.argv[2]
+    if(csrf=='' or sessdata==''):
+        print('必要变量未设置！程序即将退出！')
+        sys.exit()
+except:
+    print('缺少必要变量！程序即将推出！')
     sys.exit()
 
 try:
@@ -23,12 +26,17 @@ try:
         GiveUpEnable=False
 except:
     GiveUpEnable=True
+
 try:
-    if not GiveUpEnable:
-        delay=sys.argv[4]
+    delay=sys.argv[4]
 except:
     delay=300
 
+config={
+    '放弃': GiveUpEnable
+    '无法判断等待时间': delay
+}
+print(config)
 ApplyResult=None
 cannotJudge=False
 
