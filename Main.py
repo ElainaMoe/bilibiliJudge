@@ -22,19 +22,24 @@ except:
 
 try:
     GiveUpEnable=sys.argv[3]
+    GiveUpEnableDisplay='是'
     if GiveUpEnable=='False':
         GiveUpEnable=False
+        GiveUpEnableDisplay='否'
 except:
     GiveUpEnable=True
+    GiveUpEnableDisplay='是'
 
 try:
-    delay=sys.argv[4]
+    delay=int(sys.argv[4])
+    delayDisplay='{}秒'.format(delay)
 except:
     delay=300
+    delayDisplay='300秒'
 
 config={
-    '放弃': GiveUpEnable,
-    '无法判断等待时间': delay
+    '是否开启放弃': GiveUpEnableDisplay,
+    '无法判断等待时间': delayDisplay
 }
 print(config)
 ApplyResult=None
