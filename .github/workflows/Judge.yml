@@ -29,5 +29,10 @@ jobs:
       run: |
         pip install -r requirements.txt
     - name: Run script
+      env:
+        scrf: ${{ secrets.csrf }}
+        sessdata: ${{ secrets.sessdata }}
+        giveup: ${{ secrets.GiveUp }}
+        delay: ${{ secrets.delay }}
       run: |
-        python3 Main.py "${{ secrets.csrf }}" "${{ secrets.sessdata }}" "${{ secrets.GiveUp }}" "${{ secrets.delay }}"
+        python3 Main.py "$scrf" "$sessdata" "$giveup" "$delay"
