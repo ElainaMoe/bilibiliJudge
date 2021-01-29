@@ -33,7 +33,7 @@ except:
     delay=300
 
 config={
-    '放弃': GiveUpEnable
+    '放弃': GiveUpEnable,
     '无法判断等待时间': delay
 }
 print(config)
