@@ -19,6 +19,8 @@ if(csrf=='' or sessdata==''):
 
 try:
     GiveUpEnable=sys.argv[3]
+    if GiveUpEnable=='False':
+        GiveUpEnable=False
 except:
     GiveUpEnable=True
 try:
