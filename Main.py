@@ -35,10 +35,8 @@ try:
 except:
     delay=300
 
-config={
-    '是否开启放弃': GiveUpEnableDisplay
-}
-print(config)
+GiveupConfig='检测到放弃选项的开启状态为：{}，即将开始运行判定程序！'.format(GiveUpEnableDisplay)
+print(GiveupConfig)
 ApplyResult=None
 cannotJudge=False
 
