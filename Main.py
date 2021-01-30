@@ -37,7 +37,7 @@ except:
 
 try:
     print('tried')
-    JudgeProportion=sys.argv[5]
+    JudgeProportion=float(sys.argv[5])
     if not(JudgeProportion<1 and JudgeProportion>0):
         print('invalid')
         JudgeProportion=0.7
