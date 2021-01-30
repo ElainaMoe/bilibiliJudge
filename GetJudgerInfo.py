@@ -3,8 +3,6 @@ import json as js
 
 url='http://api.bilibili.com/x/credit/jury/jury'
 
-
-
 def GetInfo(SESSDATA):
     test='SESSDATA={}'.format(SESSDATA)
     headers={
