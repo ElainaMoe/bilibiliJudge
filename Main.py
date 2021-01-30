@@ -90,7 +90,8 @@ def Main():
                 global cannotJudge
                 cannotJudge=True
                 time.sleep(delay)
-                GetAndCal(cid)
+                voteBreak,voteDelete,voteRule,caseinfo=GetAndCal(cid)
+                operation,operation_print=VoteCalculate(voteBreak,voteDelete,voteRule,GiveUpEnable,JudgeProportion)
             else:
                 cannotJudge=False
                 break
