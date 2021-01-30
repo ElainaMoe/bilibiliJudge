@@ -34,5 +34,6 @@ jobs:
         sessdata: ${{ secrets.sessdata }}
         giveup: ${{ secrets.GiveUp }}
         delay: ${{ secrets.delay }}
+        JudgeProportion: ${{ secrets.JudgeProportion }}
       run: |
-        python3 Main.py "$scrf" "$sessdata" "$giveup" "$delay"
+        python3 Main.py "$scrf" "$sessdata" "$giveup" "$delay" "$JudgeProportion"

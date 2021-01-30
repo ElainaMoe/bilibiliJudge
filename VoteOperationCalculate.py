@@ -6,7 +6,7 @@ voteaction={
     "CannotJudge": "无法判断"
 }
 
-def VoteCalculate(BreakVote,DeleleVote,RuleVote,GiveUpEnable):
+def VoteCalculate(BreakVote,DeleleVote,RuleVote,GiveUpEnable,JudgeProportion):
     approve=BreakVote+DeleleVote
     deny=RuleVote
     try:
@@ -14,12 +14,12 @@ def VoteCalculate(BreakVote,DeleleVote,RuleVote,GiveUpEnable):
     except ZeroDivisionError:
         proportion=1
     result=None
-    if(proportion>=0.7):
+    if(proportion>=JudgeProportion):
         if DeleleVote>=BreakVote:
             result='Delete'
         else:
             result='Break'
-    elif(proportion<=0.3):
+    elif(proportion<=(1-JudgeProportion)):
         result="Rule"
     else:
         if(GiveUpEnable):

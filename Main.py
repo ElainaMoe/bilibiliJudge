@@ -35,7 +35,14 @@ try:
 except:
     delay=300
 
-GiveupConfig='检测到放弃选项的开启状态为：{}，即将开始运行判定程序！'.format(GiveUpEnableDisplay)
+try:
+    JudgeProportion=(sys.argv[5])
+    if not(JudgeProportion<1 and JudgeProportion>0):
+        JudgeProportion=0.7
+except:
+    JudgeProportion=0.7
+
+GiveupConfig='检测到放弃选项的开启状态为：{}，判定比例为：{}%，即将开始运行判定程序！'.format(GiveUpEnableDisplay,JudgeProportion*100)
 print(GiveupConfig)
 ApplyResult=None
 cannotJudge=False
@@ -76,7 +83,7 @@ def Main():
             print('今天案件已经审核满或没有需要仲裁的案件了，明天我们再继续吧~')
             sys.exit()
         voteBreak,voteDelete,voteRule,caseinfo=GetAndCal(cid)
-        operation,operation_print=VoteCalculate(voteBreak,voteDelete,voteRule,GiveUpEnable)
+        operation,operation_print=VoteCalculate(voteBreak,voteDelete,voteRule,GiveUpEnable,JudgeProportion)
         while True:
             if(operation=='CannotJudge'):
                 print('目前案件{}的投票数量不足以判定操作，将在{}秒钟后重试！'.format(caseinfo['data']['id'],delay))
