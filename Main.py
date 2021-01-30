@@ -36,10 +36,13 @@ except:
     delay=300
 
 try:
-    JudgeProportion=(sys.argv[5])
+    print('tried')
+    JudgeProportion=sys.argv[5]
     if not(JudgeProportion<1 and JudgeProportion>0):
+        print('invalid')
         JudgeProportion=0.7
 except:
+    print('except')
     JudgeProportion=0.7
 
 GiveupConfig='检测到放弃选项的开启状态为：{}，判定比例为：{}%，即将开始运行判定程序！'.format(GiveUpEnableDisplay,JudgeProportion*100)
