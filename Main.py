@@ -46,7 +46,7 @@ GiveupConfig='检测到放弃选项的开启状态为：{}，判定比例为：{
 print(GiveupConfig)
 ApplyResult=None
 cannotJudge=False
-
+Judged=False
 
 def GetAndCal(cid):
     case=GetCase(cid).text
@@ -60,7 +60,8 @@ def GetAndCal(cid):
     voteBreak=caseinfo['data']['voteBreak']
     voteDelete=caseinfo['data']['voteDelete']
     voteRule=caseinfo['data']['voteRule']
-    return voteBreak,voteDelete,voteRule,caseinfo
+    voteStatus=caseinfo['data']['status']
+    return voteBreak,voteDelete,voteRule,caseinfo,voteStatus
 
 
 def Main():
@@ -82,23 +83,31 @@ def Main():
         if(cid==True):
             print('今天案件已经审核满或没有需要仲裁的案件了，明天我们再继续吧~')
             sys.exit()
-        voteBreak,voteDelete,voteRule,caseinfo=GetAndCal(cid)
+        voteBreak,voteDelete,voteRule,caseinfo,caseStatus=GetAndCal(cid)
         operation,operation_print=VoteCalculate(voteBreak,voteDelete,voteRule,GiveUpEnable,JudgeProportion)
         while True:
+            if(int(caseStatus)==4):
+                Judged=True
             if(operation=='CannotJudge'):
                 print('目前案件{}的投票数量不足以判定操作，将在{}秒钟后重试！'.format(caseinfo['data']['id'],delay))
                 global cannotJudge
                 cannotJudge=True
                 time.sleep(delay)
-                voteBreak,voteDelete,voteRule,caseinfo=GetAndCal(cid)
+                voteBreak,voteDelete,voteRule,caseinfo,caseStatus=GetAndCal(cid)
                 operation,operation_print=VoteCalculate(voteBreak,voteDelete,voteRule,GiveUpEnable,JudgeProportion)
             else:
                 cannotJudge=False
                 break
-        operation_output='案件{}的投票结果计算为{}，正在进行投票操作……'.format(caseinfo['data']['id'],operation_print)
-        print(operation_output)
-        Vote(operation,cid,csrf,sessdata)
-        print('已完成投票操作！')
+        if(Judged):
+            print('当前案件已裁决完毕，即将进行下一案件的审理……')
+            Judged=False
+        else:
+            operation_output='案件{}的投票结果计算为{}，正在进行投票操作……'.format(caseinfo['data']['id'],operation_print)
+            print(operation_output)
+            Vote(operation,cid,csrf,sessdata)
+            print('已完成投票操作！')
+            Judged=False
+        
     
 
 if __name__ == "__main__":
