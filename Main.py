@@ -86,6 +86,7 @@ def Main():
         voteBreak,voteDelete,voteRule,caseinfo,caseStatus=GetAndCal(cid)
         operation,operation_print=VoteCalculate(voteBreak,voteDelete,voteRule,GiveUpEnable,JudgeProportion)
         while True:
+            global Judged
             if(int(caseStatus)==4):
                 Judged=True
             if(operation=='CannotJudge'):
