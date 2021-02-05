@@ -105,7 +105,7 @@ def Main():
             Judged=False
         else:
             randomtime=random.randint(10,600)
-            print('将等待{}秒后进行判定'.format(randomtime)
+            print('将等待{}秒后进行判定'.format(randomtime))
             time.sleep(randomtime)
             operation_output='案件{}的投票结果计算为{}，正在进行投票操作……'.format(caseinfo['data']['id'],operation_print)
             print(operation_output)
