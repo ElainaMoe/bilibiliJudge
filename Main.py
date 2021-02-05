@@ -9,6 +9,7 @@ import sys
 import json as js
 import requests as r
 import time
+import random
 
 try:
     csrf=sys.argv[1]
@@ -103,6 +104,8 @@ def Main():
             print('当前案件已裁决完毕，即将进行下一案件的审理……')
             Judged=False
         else:
+            randomtime=random.randint(10,600)
+            time.sleep(randomtime)
             operation_output='案件{}的投票结果计算为{}，正在进行投票操作……'.format(caseinfo['data']['id'],operation_print)
             print(operation_output)
             Vote(operation,cid,csrf,sessdata)
