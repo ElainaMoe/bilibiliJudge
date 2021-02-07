@@ -11,14 +11,14 @@ import requests as r
 import time
 import random
 
-try:
-    csrf=sys.argv[1]
-    sessdata=sys.argv[2]
-    if(csrf=='' or sessdata==''):
-        print('必要变量未设置！程序即将退出！')
-        sys.exit()
-except:
-    print('缺少必要变量！程序即将推出！')
+class VariableError(Exception):
+    pass
+
+csrf=sys.argv[1]
+sessdata=sys.argv[2]
+if(csrf=='' or sessdata==''):
+    print('必要变量未设置！程序即将退出！')
+    raise(VariableError('Essential variable(s) not available!'))
     sys.exit()
 
 try:
