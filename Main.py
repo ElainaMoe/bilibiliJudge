@@ -47,7 +47,6 @@ GiveupConfig='检测到放弃选项的开启状态为：{}，判定比例为：{
 print(GiveupConfig)
 ApplyResult=None
 cannotJudge=False
-Judged=False
 
 def GetAndCal(cid):
     case=GetCase(cid).text
@@ -89,8 +88,6 @@ def Main():
             print('当前案件已裁决完毕，即将进行下一案件的审理……')
             continue
         while True:
-            if(int(casestatus)==4):
-                Judged=True
             if(operation=='CannotJudge'):
                 print('目前案件{}的投票数量不足以判定操作，将在{}秒钟后重试！'.format(caseinfo['data']['id'],delay))
                 global cannotJudge
@@ -108,7 +105,6 @@ def Main():
             print(operation_output)
             Vote(operation,cid,csrf,sessdata)
             print('已完成投票操作！')
-            Judged=False
         
     
 
