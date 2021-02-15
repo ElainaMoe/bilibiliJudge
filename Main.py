@@ -86,9 +86,9 @@ def Main():
         voteBreak,voteDelete,voteRule,caseinfo,casestatus=GetAndCal(cid)
         operation,operation_print=VoteCalculate(voteBreak,voteDelete,voteRule,GiveUpEnable,JudgeProportion)
         if casestatus==4:
+            print('当前案件已裁决完毕，即将进行下一案件的审理……')
             continue
         while True:
-            global Judged
             if(int(casestatus)==4):
                 Judged=True
             if(operation=='CannotJudge'):
@@ -101,10 +101,6 @@ def Main():
             else:
                 cannotJudge=False
                 break
-        if(Judged):
-            print('当前案件已裁决完毕，即将进行下一案件的审理……')
-            Judged=False
-        else:
             randomtime=random.randint(10,600)
             print('将等待{}秒后进行判定'.format(randomtime))
             time.sleep(randomtime)
