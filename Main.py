@@ -51,7 +51,7 @@ cannotJudge=False
 def GetAndCal(cid):
     case=GetCase(cid).text
     caseinfo=js.loads(case)
-    printinfo=Parse(case)
+    printinfo,casestatus=Parse(case)
     toprint='''
 获取到风纪委员案件（ID：{}），具体信息如下：
 {}
@@ -60,7 +60,7 @@ def GetAndCal(cid):
     voteBreak=caseinfo['data']['voteBreak']
     voteDelete=caseinfo['data']['voteDelete']
     voteRule=caseinfo['data']['voteRule']
-    return voteBreak,voteDelete,voteRule,caseinfo
+    return voteBreak,voteDelete,voteRule,caseinfo,casestatus
 
 
 def Main():
@@ -82,8 +82,10 @@ def Main():
         if(cid==True):
             print('今天案件已经审核满或没有需要仲裁的案件了，明天我们再继续吧~')
             sys.exit()
-        voteBreak,voteDelete,voteRule,caseinfo=GetAndCal(cid)
+        voteBreak,voteDelete,voteRule,caseinfo,casestatus=GetAndCal(cid)
         operation,operation_print=VoteCalculate(voteBreak,voteDelete,voteRule,GiveUpEnable,JudgeProportion)
+        if casestatus==4:
+            continue
         while True:
             if(operation=='CannotJudge'):
                 print('目前案件{}的投票数量不足以判定操作，将在{}秒钟后重试！'.format(caseinfo['data']['id'],delay))
