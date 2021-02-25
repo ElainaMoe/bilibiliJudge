@@ -7,7 +7,9 @@ avaliability=False
 
 def Apply(sessdata,csrf):
     headers={
-        'cookie': 'SESSDATA={}'.format(sessdata)
+        'cookie': 'SESSDATA={}'.format(sessdata),
+        'Host': 'api.bilibili.com',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.146 Safari/537.36'
     }
     result=js.loads(r.get(checkurl,headers=headers).text)
     blocked,cert,level,rule=result['data']['blocked'],result['data']['cert'],result['data']['level'],result['data']['rule']
@@ -15,7 +17,9 @@ def Apply(sessdata,csrf):
         global avaliability
         avaliability=True
     headers={
-        'cookie': 'bili_jct={}; SESSDATA={}'.format(csrf,sessdata)
+        'cookie': 'bili_jct={}; SESSDATA={}'.format(csrf,sessdata),
+        'Host': 'api.bilibili.com',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.146 Safari/537.36'
     }
     params={
         'csrf': csrf

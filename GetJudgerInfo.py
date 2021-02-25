@@ -4,9 +4,11 @@ import json as js
 url='http://api.bilibili.com/x/credit/jury/jury'
 
 def GetInfo(SESSDATA):
-    test='SESSDATA={}'.format(SESSDATA)
+    cookie='SESSDATA={}'.format(SESSDATA)
     headers={
-        'cookie': test,
+        'cookie': cookie,
+        'Host': 'api.bilibili.com',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.146 Safari/537.36'
     }
     info=r.get(url,headers=headers)
     info_loads=js.loads(info.text)

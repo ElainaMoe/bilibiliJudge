@@ -7,7 +7,6 @@ from GetNewCase import GetNew
 from JudgementApply import Apply
 import sys
 import json as js
-import requests as r
 import time
 import random
 
