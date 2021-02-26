@@ -1,8 +1,6 @@
 # 风纪委员会自动投票
 
-**请注意：2021.2.24出现疑似封脚本操作，具体表现为风纪委员信息查询API请求被拦截，请先不要Fork使用，请之前fork过本脚本的使用者先把该仓库的Action功能关闭（【Settings】->【Action】->【Disable Action】->【Save】)，等解决后再使用！具体信息可参阅[#6](https://github.com/GamerNoTitle/bilibiliJudge/issues/6)**
-
-**已经推送了应对反脚本的修复，在分支[AntiScriptFix](https://github.com/GamerNoTitle/bilibiliJudge/tree/AntiScriptFix)，你可以合并测试（参考[#6](https://github.com/GamerNoTitle/bilibiliJudge/issues/6#issuecomment-785759030)），过几天测试通过就合并主分支**
+**脚本已经可以正常使用，感谢大家的支持！**
 
 本脚本通过使用Github Action来实现B站风纪委员的自动投票功能，喜欢请给我点个STAR吧！
 
