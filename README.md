@@ -166,6 +166,36 @@ KeyError: 'data'
 
 并发起issue询问（当然你能自己看懂是什么情况是最好的）
 
+##### 获取案件一节：KeyError
+
+```
+  File "Main.py", line 111, in <module>
+    Main()
+  File "Main.py", line 80, in Main
+    cid=GetNew(csrf,sessdata)
+  File "/home/runner/work/bilibiliJudge/bilibiliJudge/GetNewCase.py", line 19, in GetNew
+    result=dataloads['data']['id']
+KeyError: 'data'
+```
+
+请找到`GetNewCase.py`文件，在第17行把下面这行代码的`#`删掉，并注意对齐
+
+```python
+    dataloads=js.loads(data.text)
+    # print(dataloads)  # 第17行
+    if(dataloads['code']==25014 or dataloads['code']==25008): return True
+```
+
+删完应该像下面这样
+
+```python
+    dataloads=js.loads(data.text)
+    print(dataloads)
+    if(dataloads['code']==25014 or dataloads['code']==25008): return True
+```
+
+然后将运行结果附在issue里面询问（当然能自己解决最好）
+
 ## 免责声明
 
 学习项目，请勿滥用！如果有因滥用造成的封号、删除账户等情况或违反相关法律所造成的责任，本人拒不承担！
