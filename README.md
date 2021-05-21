@@ -4,7 +4,7 @@
 
 
 
-**本脚本从[@GamerNoTitle](https://github.com/GamerNoTitle)出Fork而来，源仓库已于2020.5.19删除（我也不知道为什么本仓库会成为源仓库，理论上应该所有人都是源仓库才对），具体请参照[关于得知Github查封Action仓库的信息后我自行删除脚本的这档事 #2](https://github.com/GamerNoTitle/GamerNoTitle/discussions/2)**
+**本脚本从[@GamerNoTitle](https://github.com/GamerNoTitle)出Fork而来，源仓库已于2021.5.19删除（我也不知道为什么本仓库会成为源仓库，理论上应该所有人都是源仓库才对），具体请参照[关于得知Github查封Action仓库的信息后我自行删除脚本的这档事 #2](https://github.com/GamerNoTitle/GamerNoTitle/discussions/2)**
 
 本脚本通过使用Github Action来实现B站风纪委员的自动投票功能，喜欢请给我点个STAR吧！
 
