@@ -67,14 +67,16 @@ def Main():
     print('获取到用户信息，具体如下：')
     print(UserinfoParsed)
     if(Userinfo['data']['status']==2):
-        print('检测到未具有风纪委员资格，正在尝试申请……')
-        global ApplyResult
-        ApplyResult,ApplyMsg=Apply(sessdata,csrf)
-        if(ApplyResult):
-            print('风纪委员资格申请成功，正在执行脚本操作……')
-        elif(not ApplyResult):
-            print('申请风纪委员资格失败，{}，脚本即将退出！'.format(ApplyMsg))
-            sys.exit()
+        print('未具有风纪委员资格，正在退出……')
+        sys.exit()
+#        print('检测到未具有风纪委员资格，正在尝试申请……')
+#        global ApplyResult
+#        ApplyResult,ApplyMsg=Apply(sessdata,csrf)
+#        if(ApplyResult):
+#            print('风纪委员资格申请成功，正在执行脚本操作……')
+#        elif(not ApplyResult):
+#            print('申请风纪委员资格失败，{}，脚本即将退出！'.format(ApplyMsg))
+#            sys.exit()
     while True:
         print('正在进行下一案件的获取……')
         cid=GetNew(csrf,sessdata)
