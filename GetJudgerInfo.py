@@ -16,7 +16,7 @@ def GetInfo(SESSDATA):
         1: '具有资格',
         2: '资格失效'
     }
-    username='***
+    username='***'
     parsed=str({
         '用户名': username,
         '已裁决案件数': info_loads['data']['caseTotal'],
