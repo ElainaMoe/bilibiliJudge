@@ -2,9 +2,13 @@
 
 请注意：关于LICENSE，在Apache-2.0的基础上增加一条：**禁止上传到CSDN等网站盈利，禁止放在某宝某鱼等平台贩卖**，否则官方找上门就**删库跑路**！
 
+
+
+**本脚本从[@GamerNoTitle](https://github.com/GamerNoTitle)出Fork而来，源仓库已于2021.5.19删除（我也不知道为什么本仓库会成为源仓库，理论上应该所有人都是源仓库才对），具体请参照[关于得知Github查封Action仓库的信息后我自行删除脚本的这档事 #2](https://github.com/GamerNoTitle/GamerNoTitle/discussions/2)**
+
 本脚本通过使用Github Action来实现B站风纪委员的自动投票功能，喜欢请给我点个STAR吧！
 
-如果你不是风纪委员，在符合风纪委员申请条件的情况下，本脚本会自动帮你申请
+~~如果你不是风纪委员，在符合风纪委员申请条件的情况下，本脚本会自动帮你申请~~ 不现在不会了╮(╯▽╰)╭
 
 投票时间是早上八点，如果有需要请自行修改`.github/workflows/Judge.yml`中的时间，时间是UTC时区的时间，需要将时位+8才是北京时间
 
@@ -69,8 +73,6 @@
 接着我们点到上面的`Network`（有些写的是`网络`，例如Edge），在左边找到index项，然后点击它，在右侧找到cookie这一个键，然后复制`SESSDATA=`到`;`的内容作为`sessdata`和`bili_jct=`到`;`的内容作为csrf
 
 **请注意：不要把分号弄进去了！不要分号！不要分号！（重要的事情说三遍）**
-
-![](https://upimage.alexhchu.com/2021/01/26/a892c4e380db5.png)
 
 #### giveup与delay
 

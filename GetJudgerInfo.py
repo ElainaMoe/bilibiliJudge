@@ -16,8 +16,9 @@ def GetInfo(SESSDATA):
         1: '具有资格',
         2: '资格失效'
     }
+    username='***'
     parsed=str({
-        '用户名': info_loads['data']['uname'][0]+ ('*' * int(len(info_loads['data']['uname'])-2)) +info_loads['data']['uname'][len(info_loads['data']['uname'])-1:],
+        '用户名': username,
         '已裁决案件数': info_loads['data']['caseTotal'],
         '资格状态': status[info_loads['data']['status']],
         '剩余资格天数': info_loads['data']['restDays'],
