@@ -2,7 +2,7 @@
 
 请注意：关于LICENSE，在Apache-2.0的基础上增加一条：**禁止上传到CSDN等网站盈利，禁止放在某宝某鱼等平台贩卖**，否则官方找上门就**删库跑路**！
 
-
+因为B站风纪委员改革，本库将永久处于Archive状态，谢谢大家的陪伴
 
 **本脚本从[@GamerNoTitle](https://github.com/GamerNoTitle)出Fork而来，源仓库已于2021.5.19删除（我也不知道为什么本仓库会成为源仓库，理论上应该所有人都是源仓库才对），具体请参照[关于得知Github查封Action仓库的信息后我自行删除脚本的这档事 #2](https://github.com/GamerNoTitle/GamerNoTitle/discussions/2)**
 
