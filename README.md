@@ -1,5 +1,7 @@
 # 风纪委员会自动投票
 
+![bilibiliJudge](https://socialify.git.ci/ElainaMoe/bilibiliJudge/image?forks=1&issues=1&language=1&name=1&owner=1&pulls=1&stargazers=1&theme=Light)
+
 请注意：关于LICENSE，在Apache-2.0的基础上增加一条：**禁止上传到CSDN等网站盈利，禁止放在某宝某鱼等平台贩卖**，否则官方找上门就**删库跑路**！
 
 因为B站风纪委员改革，本库将永久处于Archive状态，谢谢大家的陪伴。如需留言，请到GamerNoTitle的Discussion中留言，链接在下面一行。如果有技术交流，欢迎私信！
